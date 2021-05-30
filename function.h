@@ -82,6 +82,25 @@ void left() {
  digitalWrite(pin_motor_in4, HIGH); 
  delay(dl); 
 }
+void radar() {
+ int duration, cm; 
+ digitalWrite(pin_radar_trig, LOW); 
+ delayMicroseconds(2); 
+ digitalWrite(pin_radar_trig, HIGH); 
+ delayMicroseconds(10); 
+ digitalWrite(pin_radar_trig, LOW); 
+ duration = pulseIn(pin_radar_echo, HIGH); 
+ cm = duration / 58; 
+ if(cm < 50) { 
+ zummer_on(); 
+ diod_blink_on(); 
+ } 
+ else { 
+ zummer_off(); 
+ diod_blink_off(); 
+ } 
+ delay(10);
+}
 void motor_on() { 
  if(flag_for_motor==0){ 
  for(int i =0; i <256; i++) { 
@@ -104,36 +123,3 @@ void motor_off() {
  digitalWrite(pin_motor_in3, LOW); 
  digitalWrite(pin_motor_in4, LOW); 
 } 
-int dalnomer() { 
- int duration, cm; 
- digitalWrite(pin_radar_trig, LOW); 
- delayMicroseconds(2); 
- digitalWrite(pin_radar_trig, HIGH); 
- delayMicroseconds(10); 
- digitalWrite(pin_radar_trig, LOW); 
- duration = pulseIn(pin_radar_echo, HIGH); 
- cm = duration / 58; 
- delay(100); 
- return cm; 
-} 
-void radar() {
- int duration, cm; 
- digitalWrite(pin_radar_trig, LOW); 
- delayMicroseconds(2); 
- digitalWrite(pin_radar_trig, HIGH); 
- delayMicroseconds(10); 
- digitalWrite(pin_radar_trig, LOW); 
- duration = pulseIn(pin_radar_echo, HIGH); 
- cm = duration / 58; 
- Serial.print(cm); 
- Serial.println(" cm"); 
- if(cm < 50) { 
- zummer_on(); 
- diod_blink_on(); 
- } 
- else { 
- zummer_off(); 
- diod_blink_off(); 
- } 
- delay(10);
-}
