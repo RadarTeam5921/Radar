@@ -57,7 +57,31 @@ void right() {
  digitalWrite(pin_motor_in4, LOW); 
  delay(dl); 
 } 
-
+void left() { 
+ digitalWrite(pin_motor_in1, HIGH); 
+ digitalWrite(pin_motor_in2, HIGH); 
+ digitalWrite(pin_motor_in3, LOW); 
+ digitalWrite(pin_motor_in4, LOW); 
+ delay(dl); 
+ 
+ digitalWrite(pin_motor_in1, LOW); 
+ digitalWrite(pin_motor_in2, HIGH); 
+ digitalWrite(pin_motor_in3, HIGH); 
+ digitalWrite(pin_motor_in4, LOW); 
+ delay(dl); 
+ 
+ digitalWrite(pin_motor_in1, LOW); 
+ digitalWrite(pin_motor_in2, LOW); 
+ digitalWrite(pin_motor_in3, HIGH); 
+ digitalWrite(pin_motor_in4, HIGH); 
+ delay(dl); 
+ 
+ digitalWrite(pin_motor_in1, HIGH); 
+ digitalWrite(pin_motor_in2, LOW); 
+ digitalWrite(pin_motor_in3, LOW); 
+ digitalWrite(pin_motor_in4, HIGH); 
+ delay(dl); 
+}
 void motor_off() { 
  digitalWrite(pin_motor_in1, LOW); 
  digitalWrite(pin_motor_in2, LOW); 
