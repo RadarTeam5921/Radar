@@ -82,6 +82,20 @@ void left() {
  digitalWrite(pin_motor_in4, HIGH); 
  delay(dl); 
 }
+void motor_on() { 
+ if(flag_for_motor==0){ 
+ for(int i =0; i <256; i++) { 
+ left(); 
+ } 
+ flag_for_motor=1; 
+ } 
+ else { 
+ for(int i =0; i <256; i++) { 
+ right(); 
+ } 
+ flag_for_motor=0; 
+ } 
+}
 void motor_off() { 
  digitalWrite(pin_motor_in1, LOW); 
  digitalWrite(pin_motor_in2, LOW); 
