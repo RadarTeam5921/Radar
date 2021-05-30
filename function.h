@@ -114,3 +114,25 @@ int dalnomer() {
  delay(100); 
  return cm; 
 } 
+void radar() {
+ motor_on(); 
+ int duration, cm; 
+ digitalWrite(pin_radar_trig, LOW); 
+ delayMicroseconds(2); 
+ digitalWrite(pin_radar_trig, HIGH); 
+ delayMicroseconds(10); 
+ digitalWrite(pin_radar_trig, LOW); 
+ duration = pulseIn(pin_radar_echo, HIGH); 
+ cm = duration / 58; 
+ Serial.print(cm); 
+ Serial.println(" cm"); 
+ if(cm < 50) { 
+ zummer_on(); 
+ diod_blink_on(); 
+ } 
+ else { 
+ zummer_off(); 
+ diod_blink_off(); 
+ } 
+ delay(10);
+}
