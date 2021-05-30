@@ -85,12 +85,14 @@ void left() {
 void motor_on() { 
  if(flag_for_motor==0){ 
  for(int i =0; i <256; i++) { 
+ if(i % 16 == 0) radar(); 
  left(); 
  } 
  flag_for_motor=1; 
  } 
  else { 
  for(int i =0; i <256; i++) { 
+ if(i % 16 == 0) radar();
  right(); 
  } 
  flag_for_motor=0; 
@@ -115,7 +117,6 @@ int dalnomer() {
  return cm; 
 } 
 void radar() {
- motor_on(); 
  int duration, cm; 
  digitalWrite(pin_radar_trig, LOW); 
  delayMicroseconds(2); 
